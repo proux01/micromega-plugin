@@ -1,0 +1,4 @@
+(coq.theory
+ (name micromega)
+ (package micromega-plugin)
+ (plugins micromega-plugin.plugin))
