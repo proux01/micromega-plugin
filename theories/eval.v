@@ -59,6 +59,8 @@ Variable ex : forall k : kind, TX k -> eKind k. (* [ex] will be the identity *)
 
 Variable ea : forall k : kind, TA -> eKind k.
 
+Set OldIfWOBoolCoercion.
+(* Use "if k is isProp then" when requiring Rocq >= 9.3 *)
 Definition eTT (k : kind) : eKind k :=
   if k as k' return eKind k' then True else true.
 
@@ -80,6 +82,7 @@ Definition eIMPL (k : kind) : eKind k -> eKind k -> eKind k :=
 
 Definition eIFF (k : kind) : eKind k -> eKind k -> eKind k :=
   if k as k' return eKind k' -> eKind k' -> eKind k' then iff else eqb.
+Unset OldIfWOBoolCoercion.
 
 Fixpoint GFeval (k : kind) (f : GFormula k) {struct f} : eKind k :=
   match f in formula.GFormula k' return eKind k' with

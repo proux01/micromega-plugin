@@ -92,7 +92,10 @@ Register IMPL as micromega_plugin.GFormula.IMPL.
 Register IFF as micromega_plugin.GFormula.IFF.
 Register EQ as micromega_plugin.GFormula.EQ.
 
+Set OldIfWOBoolCoercion.
+(* Use "if k is isProp then" when requiring Rocq >= 9.3 *)
 Definition eKind (k : kind) := if k then Prop else bool.
+Unset OldIfWOBoolCoercion.
 
 Register eKind as micromega_plugin.eKind.
 
